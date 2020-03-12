@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-  entry: './src/app.js',
+  entry: './src/playground/redux-100.js',
   output: {
     path: path.join(__dirname, 'public'),
     filename: 'bundle.js'
@@ -20,9 +20,9 @@ module.exports = {
       ]
     }]
   },
-  devtool: 'cheap-module-eval-source-map',
+  devtool: 'cheap-module-eval-source-map',//show specific line code on bundle.js file 
   devServer: {
     contentBase: path.join(__dirname, 'public'),
-    historyApiFallback: true
+    historyApiFallback: true //show other path apart from the dashboard localhost://8080
   }
 };

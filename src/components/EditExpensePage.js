@@ -1,9 +1,13 @@
 import React from 'react'
-
-const EditExpensePage = () => (
+//use curly braces when using return
+//react-router-dom gives us the object(props),match,params & id 
+const EditExpensePage = (props) => {
+    console.log(props);
+    return ( 
     <div> 
-        This is from my edit expense component
+        Editing the expense with id of {props.match.params.id} 
     </div>
-)
+    )
+}
 
 export default EditExpensePage;
