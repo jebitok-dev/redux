@@ -1,6 +1,6 @@
 import { createStore } from 'redux';
 
-const store = createStore((state = { count: 0}, action) => {
+const countReducer = (state = { count: 0}, action) => {
     switch (action.type) {
         case 'INCREMENT':
             return {
@@ -23,16 +23,27 @@ const store = createStore((state = { count: 0}, action) => {
             default:
                 return state;
     }
-});
-store.subscribe(() => {
+}
+
+const store = createStore(countReducer);
+
+store.subscribe((() => {
     console.log(store.getState());
-})
+
+}))
 //Actions -> an object that gets sent to the store
-const incrementCount = (payload = {}) => {
+// const incrementCount = (payload = {}) => {
+//     return {
+//         type: 'INCREMENT',
+//         incrementBy: typeof payload.incrementBy === 'number' ? 
+//         payload.incrementBy: 1 //payload. applies to object
+//     }
+// }
+
+const incrementCount = ({ incrementBy = 1} = {}) => {
     return {
         type: 'INCREMENT',
-        incrementBy: typeof payload.incrementBy === 'number' ? 
-        payload.incrementBy: 1 //payload. applies to object
+        incrementBy
     }
 }
 
@@ -41,21 +52,34 @@ const resetCount = () => {
         type: 'RESET'
     }
 }
-
-const decrementCount = (payload = {}) => {
+  
+const decrementCount = ({ decrementBy = 1} = {}) => {
     return {
         type: 'DECREMENT',
-        decrementBy: typeof payload.decrementBy === 'number' ? 
-        payload.decrementBy: 1
+        decrementBy
     }
 }
 
-const setCount = (payload) => {
+// const decrementCount = (payload = {}) => {
+//     return {
+//         type: 'DECREMENT',
+//         decrementBy: typeof payload.decrementBy === 'number' ? 
+//         payload.decrementBy: 1
+//     }
+// }
+
+const setCount = ({ count } = {}) => {
     return {
         type: 'SET',
-        count: payload.count
+        count
     }
-} 
+}
+// const setCount = (payload) => {
+//     return {
+//         type: 'SET',
+//         count: payload.count
+//     }
+// } 
 
 
 store.dispatch (incrementCount({incrementBy: 5}));
