@@ -20,9 +20,10 @@ export const addExpense = (
  export  const removeExpense = ({ id } = {}) => ({
     type: 'REMOVE_EXPENSE',
     id
-   });// EDIT_EXPENSE
+   });
+   // EDIT_EXPENSE
  export  const editExpense = (id, updates) => ({
     type: 'EDIT_EXPENSE',
     id,
     updates
-});
+  });
