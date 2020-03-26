@@ -50,3 +50,26 @@ function f(x,y,z,w) {
 }
 var g = spreadArgs(f);
 g([1,2,3,4]);
+
+// foo(function(v) {
+//     return BarProp(v);
+// })
+
+// foo(bar);
+
+function isEven(v) {
+    return v %  2 == 1;
+}
+function isEven(v) {
+    return !isOdd(v);
+}
+console.log(isEven(4));
+
+function not(fn) {
+    return function negated(...args) {
+        return !fn(...args);
+    }
+}
+function isOdd(v) {
+    return v % 2 == 1;
+   }
