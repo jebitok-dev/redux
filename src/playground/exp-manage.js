@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'ReactDOM';
+import { provider } from 'react-redux';
 import AppRouter from './routers/AppRouter';
 import configureStore from './store/configureStore';
 import { addExpense } from './actions/expenses';
