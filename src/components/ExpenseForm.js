@@ -1,16 +1,20 @@
 import React from "react";
 import moment from "moment";
 import { singleDatePicker, SingleDatePicker } from "react-dates";
-import 'react-dates/lib/css/_datepicker-css'
+import 'react-dates/lib/css/_datepicker.css'
 
 
 export default class ExpenseForm extends React.Component  {
-    state= {
-        description: '',
-        note: '',
-        amount: "",
-        createdAt: moment(),
-        calendarFocused: false
+    constructor(props) {
+        super(props)
+        this.state={
+            description: props.expense ? props.expense.description: "",
+            note:   props.expense ? props.expense.note: "",
+        amount: props.expense(100).toString(),
+        createdAt: props.expense ? moment(props.expense.createdAt): moments,
+        calendarFocused: false,
+        error: ''
+        }        
     };
     onDescriptionChange = (e) => {
         const description = e.target.value;
@@ -31,11 +35,26 @@ export default class ExpenseForm extends React.Component  {
     onFocusChange=({ focused }) => {
         this.setState(() => ({ calendarFocused: focused}));
     }
+    onSubmit = (e) => {
+        e.prevent.default()
+
+        if(!this.state.description || !this.state.amount) {
+            this.setState(() => ({error: 'Please provide description and amount'}))
+        } else {
+            this.setState(() => ({error: ''}))
+        } this.props.onSubmit({
+            description: this.state.description,
+            amount: parseFloat(this.state.amount, 10) * 100,
+            createdAt: this.state.createdAt.valueOf(),
+            note: this.state.note
+        })
+    }
 };
 
     render() {
         return (
             <div>
+                {this.state.error && <p>{this.state.error}</p>}
                 <form>
                     <input
                     type="text"
@@ -61,6 +80,7 @@ export default class ExpenseForm extends React.Component  {
                    value={this.state.note}
                    onChange={this.onNoteChange}
                    ></textarea>
+                   <button>Add Expense</button>
                 </form>
             </div>
         )
