@@ -1,19 +1,20 @@
+import moment from "moment";
 // Filters Reducer
 const filtersReducerDefaultState = {
     text: '',
     sortBy: 'date',
-    startDate: undefined,
-    endDate: undefined
+    startDate: moment().startOf("month"),
+    endDate: moment().endOf("month")
    };
    //convert from Object spread to Object_assign 
-  export default filtersReducer = (state = filtersReducerDefaultState, action) => {
+  export default filtersReducer(state = filtersReducerDefaultState, action) => {
     switch (action.type) {
      case 'SET_TEXT_FILTER':
-       return Object.assign({}, state, {text: action.text})
-   //    return {
-   //     ...state,
-   //     text: action.text
-     // };
+       //return Object.assign({}, state, {text: action.text})
+      return {
+       ...state,
+       text: action.text
+     };
      case 'SORT_BY_AMOUNT':
       return {
        ...state,
