@@ -7,7 +7,7 @@ const filtersReducerDefaultState = {
     endDate: moment().endOf("month")
    };
    //convert from Object spread to Object_assign 
-  export default filtersReducer(state = filtersReducerDefaultState, action) => {
+  export default function filtersReducer(state = filtersReducerDefaultState, action) {
     switch (action.type) {
      case 'SET_TEXT_FILTER':
        //return Object.assign({}, state, {text: action.text})
@@ -38,4 +38,4 @@ const filtersReducerDefaultState = {
      default:
       return state;
     }
-  };
+  }
