@@ -26,17 +26,26 @@ test("should remove expense if id not found", () => {
     expect(state).toEqual(expenses)
 })
 
-test("should add an expense", () => {
-    const trip = {
-        id: '5',
-        description: 'Visit Egypt',
-        createdAt: 9700,
-        amount: 15000
-    }
-    const action = {
-        type: 'ADD_EXPENSE',
-        expense: trip
-    }
-    const state = expenseReducer(expenses, action)
-    expect(state).toEqual([expenses[0],expenses[1], expenses[2], expenses[3]])
-})
+// test("should add an expense", () => {
+//     const trip = {
+//         id: '5',
+//         description: 'Visit Egypt',
+//         createdAt: 9700,
+//         amount: 15000
+//     }
+//     const action = {
+//         type: 'ADD_EXPENSE',
+//         expense: trip
+//     }
+//     const state = expenseReducer(expenses, action)
+//     expect(state).toEqual([expenses[0],expenses[1], expenses[2], expenses[3]])
+// })
+
+// test("should edit an expense", () => {
+//     const action = {
+//         type: "EDIT_EXPENSE",
+//         id: expenses[2].id
+//     }
+//     const state = expenseReducer(expenses, action)
+//     expect(state).toEqual([expenses])
+// })
