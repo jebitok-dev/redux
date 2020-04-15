@@ -7,3 +7,8 @@ test("should render header correctly", () => {
     renderer.render(<Header />);
     expect(renderer.getRenderOutput()).toMatchSnapshot();
 });
+
+// test("should render header correctly", () => {
+//     const wrappers = shallow(<Header />)
+//     expect(wrapper).toMatchSnapshot();
+// })

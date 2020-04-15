@@ -3,7 +3,7 @@ import { connect } from "react-redux"; //Higher order component.
 import selectExpenses from "../selectors/expenses";
 import ExpenseListItem from "./ExpenseListItem";
 
-const ExpenseList = (props) =>{
+export const ExpenseList = (props) =>{
     return (
         <div>
             <h1>Expense List</h1>
