@@ -5,30 +5,37 @@ import { editExpense, removeExpense} from '../actions/expenses';
 //react-router-dom gives us the object(props),match,params & id 
 
 export class EditExpensePage extends React.Component {
-    onSubmit={expense => {
-        props.dispatch(editExpense(props.expense.id, expense));
-        props.history.push("/");
-} 
-render () {
-    return (
-        <div>
-            <h1>Edit Expense</h1>
-            <ExpenseForm 
-        expense={props.expense} />
-            <button onClick={() => {
-        props.dispatch(removeExpense({id: props.expense.id}));
-        props.history.push("/");
-        }}
-        >Remove</button>
+    onSubmit=(expense) => {
+        this.props.editExpense(this.props.expense.id, expense);
+        this.props.history.push("/");
+    }
+    onRemove = () => {
+        this.props.removeExpense({id: this.props.expense.id})
+        this.props.history.push("/")
+    };
+    render () {
+        return (
+            <div>
+                <ExpenseForm 
+            expense={this.props.expense} onSubmit={this.onSubmit}
+            />
+                <button onClick={() => {this.onRemove}}>Remove</button>
+            </div> 
+        )
+    }
+}
 
-        </div>
-    )
+const mapStateToProps = (dispatch) => {
+    return {
+        expense: state.expense.find( (expense) => expense.id === props.match.params.id)
+    }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onClick: (expense) => dispatch(editExpense(expense))
+        editExpense: (id, expense) => dispatch(editExpense(id, expense)),
+        removeExpense: (id) => dispatch(removeExpense(id))
     }
 }
  
-export default connect(null, mapDispatchToProps) (EditExpensePage);
+export default connect(mapStateToProps, mapDispatchToProps) (EditExpensePage);

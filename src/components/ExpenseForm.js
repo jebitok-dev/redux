@@ -48,7 +48,7 @@ export default class ExpenseForm extends React.Component  {
             note: this.state.note
         })
     }
-};
+}
 
     render() {
         return (

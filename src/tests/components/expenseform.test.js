@@ -3,7 +3,6 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import ExpenseForm from "../../components/ExpenseForm";
 import Expenses from "../fixtures/expenses";
-import Moment from 'moment';
 import moment from 'moment';
 
 //No Expense
@@ -12,7 +11,7 @@ test("should render ExpenseForm correctly", () => {
     expect(wrapper).toMatchSnapshot();
 })
 
-test("should render ExpenseForm correctly", () => {
+test("should render Expense Form correctly", () => {
     const wrapper = shallow(<ExpenseForm Expenses={Expenses[0]} />)
     expect(wrapper).toMatchSnapshot();
 })
@@ -47,7 +46,7 @@ test("should set note on text area change", () => {
 });
 
 test("should set amount if valid input", () => {
-    const amount = 14.75;
+    const value = 14.75;
     const wrapper = shallow(<ExpenseForm />)
     wrapper.find("input").at(1).simulate("change", {
         target: { value }
