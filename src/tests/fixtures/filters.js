@@ -1,0 +1,18 @@
+import moment from "moment";
+
+
+const filters = {
+    text: '',
+    sortBy: 'date',
+    startDate: undefined,
+    endDate: undefined
+}
+
+const altFilters = {
+    text: 'travel',
+    sortBy: 'amount',
+    startDate: momemnt(0).add(1, 'days'),
+    endDate: moment(0).add(3, 'days')
+};
+
+export { filters, altFilters};

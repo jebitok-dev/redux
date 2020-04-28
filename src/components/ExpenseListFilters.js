@@ -9,7 +9,7 @@ import {
     setEndDate
 } from "../actions/filters";
 
-class ExpenseListFilters extends React.Component {
+export class ExpenseListFilters extends React.Component {
     state = {
         focusedInput: null
     }
