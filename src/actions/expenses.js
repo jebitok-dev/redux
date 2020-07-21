@@ -1,8 +1,8 @@
 import uuid from 'uuid';
-
+//destructuring
 export const addExpense = (
     {
-     description = '',
+     description = '',//if no description, then give "";
      note = '',
      amount = 0,
      createdAt = 0
